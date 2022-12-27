@@ -23,6 +23,22 @@ app.get('/api/users', (req, res) =>{
   
 });
 
+//Hämta ett specifikt id
+app.get('/api/users/:id', (req, res) => {
+    
+    fs.readFile("users.json", (err, data) => {
+        if(err) {
+            console.log(err);
+            //res.status(404).send("Couldn't get specific user")
+        }
+        const users = JSON.parse(data)
+        const specificUser = users.filter(user => user.id == req.params.id)
+
+      res.status(200).send(specificUser)  
+    })
+    
+})
+
 //Skapa. Skapa id
 app.post('/api/users/add', (req, res) => {
     fs.readFile("users.json", (err, data) => {
@@ -52,17 +68,37 @@ app.post('/api/users/add', (req, res) => {
     // res.status(201).json(req.body);
 });
 
-//Hämta ett specifikt id
-app.get('/api/users/:id', (req, res) => {
-    res.status(202).send("Det här en specifik användare med id " + req.params.id)
-})
 
 
 //Ändra
 app.put('/api/users/update/:id', (req, res) => {
+    fs.readFile("users.json", (err, data) => {
+        if(err) {
+            res.status(404).send("Couldn't update users")
+        }
+         const users = JSON.parse(data);
+         const specificUser = users.filter(user => user.id == req.params.id)
+         if(specificUser) {
+            {
+                specificUser.userName = req.body.userName,
+                specificUser.firstName = req.body.firstName,
+                specificUser.lastName = req.body.lastName
+             }
+            // users.push(specificUser);
 
-    res.status(202).json(req.body)
+         }
+         fs.writeFile("users.json", JSON.stringify(users, null, 2), (err) => {
+            if(err) {
+                console.log(err);
+            }
+           
+         })
+          res.status(202).send(users);
+    })
+    
 });
+
+
 
 //Ta bort
 app.delete('/api/users/delete/:id', (req, res) => {
