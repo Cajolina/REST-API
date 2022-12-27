@@ -2,26 +2,32 @@ GET http://localhost:3000/api/users
 
 ###
 
+GET http://localhost:3000/api/users/2
+
+###
+
 POST http://localhost:3000/api/users/add
 Content-Type: application/json
 
 {
     "id": "",
-    "userName" : "hej",
-    "firstName": "hoho",
-    "lastName": "hihi"
+    "userName" : "test",
+    "firstName": "test",
+    "lastName": "test"
 }
 
 ###
-GET http://localhost:3000/api/users/566589
 
-###
+PUT http://localhost:3000/api/users/update/1
+Content-Type: application/json
 
-PUT http://localhost:3000/api/users/update/55674
-
+{
+    "userName" : "test",
+    "firstName": "test",
+    "lastName": "test"
+}
 ###
 
 DELETE http://localhost:3000/api/users/delete/55666
 
-###
 
