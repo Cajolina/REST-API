@@ -14,7 +14,7 @@ app.get('/api/users', (req, res) =>{
     fs.readFile("./users.json", (err, data) => {
         if(err) {
             console.log(err);
-            // res.status(404)
+            //res.status(404).send("Couldn't get users")
         }
         const users = JSON.parse(data)
         res.status(200).send(users)
@@ -28,28 +28,39 @@ app.post('/api/users/add', (req, res) => {
     fs.readFile("users.json", (err, data) => {
         if(err) {
             console.log(err);
+             //res.status(404).send("Couldn't get users")
         }
 
         const users = JSON.parse(data)
-        const newUser = req.body
-        newUser.id = users.length +1;
+        const newUser = {
+            id: users.length +1,
+            userName: req.body.userName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName
+        } 
         users.push(newUser);
          
          fs.writeFile("users.json", JSON.stringify(users, null, 2), (err) => {
             if (err) {
                 console.log(err);
+                 //res.status(404).send("Couldn't add users")
             }
-
+            res.status(201).send(users);
          })
        
     })
-      
-    res.status(201).json(req.body);
-
+    // res.status(201).json(req.body);
 });
+
+//Hämta ett specifikt id
+app.get('/api/users/:id', (req, res) => {
+    res.status(202).send("Det här en specifik användare med id " + req.params.id)
+})
+
 
 //Ändra
 app.put('/api/users/update/:id', (req, res) => {
+
     res.status(202).json(req.body)
 });
 
@@ -58,9 +69,6 @@ app.delete('/api/users/delete/:id', (req, res) => {
     res.status(202).json(req.body)
 })
 
-//Hämta ett specifikt id
-app.get('/api/users/:id', (req, res) => {
-    res.status(202).json(req.body)
-})
+
 
 app.listen(3000, () => console.log("Server är igång"));
