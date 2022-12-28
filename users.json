@@ -6,98 +6,15 @@
     "lastName": "Andersson"
   },
   {
-    "id": 2,
-    "userName": "Freddan",
-    "firstName": "Fredrik",
-    "lastName": "Thelin"
-  },
-  {
     "id": 3,
-    "userName": "hej",
-    "firstName": "hoho",
-    "lastName": "hihi"
+    "userName": "test",
+    "firstName": "test",
+    "lastName": "test"
   },
   {
     "id": 4,
-    "userName": "hej",
-    "firstName": "hoho",
-    "lastName": "hihi"
-  },
-  {
-    "id": 5,
-    "userName": "hej",
-    "firstName": "hoho",
-    "lastName": "hihi"
-  },
-  {
-    "id": 6,
-    "userName": "hej",
-    "firstName": "hoho",
-    "lastName": "hihi"
-  },
-  {
-    "id": 7,
-    "userName": "hej",
-    "firstName": "hoho",
-    "lastName": "hihi"
-  },
-  {
-    "id": 8,
-    "userName": "hej",
-    "firstName": "hoho",
-    "lastName": "hihi"
-  },
-  {
-    "id": 9,
-    "userName": "hej",
-    "firstName": "hoho",
-    "lastName": "hihi"
-  },
-  {
-    "id": 10,
-    "userName": "hej",
-    "firstName": "hoho",
-    "lastName": "hihi"
-  },
-  {
-    "id": 11,
-    "userName": "hej",
-    "firstName": "hoho",
-    "lastName": "hihi"
-  },
-  [],
-  [],
-  [],
-  [
-    {
-      "id": 1,
-      "userName": "Cajo",
-      "firstName": "Carolina",
-      "lastName": "Andersson"
-    }
-  ],
-  [
-    {
-      "id": 1,
-      "userName": "Cajo",
-      "firstName": "Carolina",
-      "lastName": "Andersson"
-    }
-  ],
-  [
-    {
-      "id": 1,
-      "userName": "Cajo",
-      "firstName": "Carolina",
-      "lastName": "Andersson"
-    }
-  ],
-  [
-    {
-      "id": 1,
-      "userName": "Cajo",
-      "firstName": "Carolina",
-      "lastName": "Andersson"
-    }
-  ]
+    "userName": "test",
+    "firstName": "test",
+    "lastName": "test"
+  }
 ]
