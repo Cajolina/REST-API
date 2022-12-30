@@ -1,14 +1,15 @@
 const express = require("express");
 const app = express();
+var path = require('path');
 //const data = require("./users.json");
 //filesystem för att kunna hantera filer, läsa skriva osv. Annars kan vi inte gör så mycket gentligen. Om vi vill hämta från jsonfil. Men om vi vill hämta från en array som är hårdkodad.
 //Bara för att ta externa fikler och använda.
 const fs = require("fs");
 const users = require("./users.json")
-
+app.use(express.static(path.join(__dirname, 'public')));
 // const cors = require("cors")
 //datan som skickas från post request. parser 
-app.use(express.json());
+app.use(express.json());//json ska appliceras på alla mina
 
 //Get all data
 app.get('/api/users', (req, res) =>{
@@ -44,7 +45,7 @@ app.get('/api/users/:id', (req, res) => {
 })
 
 //Skapa. Skapa id
-app.post('/api/users/add', (req, res) => {
+app.post('/api/users', (req, res) => {
     fs.readFile("users.json", (err, data) => {
         if(err) {
              res.status(404).send("Couldn't get users")
@@ -74,10 +75,10 @@ app.post('/api/users/add', (req, res) => {
 
 
 //Update
-app.put('/api/users/update/:id', (req, res) => {
+app.put('/api/users/:id', (req, res) => {
     fs.readFile("users.json", (err, data) => {
         if(err) {
-            res.status(404).send("Couldn't update users")
+            res.status(404).send("Couldn't find users")
             return
         }else {
             const users = JSON.parse(data)
@@ -86,29 +87,17 @@ app.put('/api/users/update/:id', (req, res) => {
                 user.userName = req.body.userName,
                 user.firstName = req.body.firstName,
                 user.lastName = req.body.lastName
-            } else{
-                res.status(404).send("Couldn't find id and update users")
-            }
-        });
-        //  const users = JSON.parse(data);
-        //  const specificUser = users.filter(user => user.id == req.params.id)
-        //  if(specificUser) {
-        //     {
-        //         specificUser.userName = req.body.userName,
-        //         specificUser.firstName = req.body.firstName,
-        //         specificUser.lastName = req.body.lastName
-        //      }
-        //     // users.push(specificUser);
-        //  }
-         fs.writeFile("users.json", JSON.stringify(users, null, 2), () => {
-            // if(err) {
-            //     res.status(400).send("Can not update");
+            } 
+            // else{
+            //     res.status(404).send("Couldn't find id and update users")
+            //     return;
             // }
+        });
+  
+         fs.writeFile("users.json", JSON.stringify(users, null, 2), () => {
            res.status(202).send(users);
          })
         }
-        
-          
     })
     
 });
@@ -116,7 +105,7 @@ app.put('/api/users/update/:id', (req, res) => {
 
 
 //Ta bort
-app.delete('/api/users/delete/:id', (req, res) => {
+app.delete('/api/users/:id', (req, res) => {
     fs.readFile("users.json", (err,data) => {
         if(err) {
             res.status(404).send("Couldn't delete user")

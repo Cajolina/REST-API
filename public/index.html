@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST-API</title>
+    <script src="https://kit.fontawesome.com/3f2800f71a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Contact List</h1>
+    </header>
+
+    <main>
+
+        <div class="form_div">
+            <h2>Create new contact</h2>
+            <form method="post" class="form_con">
+                <label for="userName">Username:</label>
+                <input type="text" name="userName">
+
+                <label for="firstName">Firstname:</label>
+                <input type="text" name="firstName">
+
+                <label for="lastName">Lastname:</label>
+                <input type="text" name="lastName">
+                <button type="submit" id="submit_btn"><i class="fa-solid fa-plus"></i>Add Contact</button>
+            </form>
+            
+        </div>
+
+        <div class="contact_container">
+            <h2>Contacts</h2>
+
+        </div>
+
+    </main>
+</body>
+</html>

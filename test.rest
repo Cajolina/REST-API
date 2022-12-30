@@ -6,7 +6,7 @@ GET http://localhost:3000/api/users/2
 
 ###
 
-POST http://localhost:3000/api/users/add
+POST http://localhost:3000/api/users/
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3000/api/users/update/22
+PUT http://localhost:3000/api/users/6
 Content-Type: application/json
 
 {
@@ -29,6 +29,6 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/users/delete/20
+DELETE http://localhost:3000/api/users/20
 
 
