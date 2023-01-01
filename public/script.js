@@ -17,6 +17,7 @@ async function getAllContacts() {
 getAllContacts()
 
 
+
 function renderAllContacts (contacts) {
     //Hämta users från json
     // console.log(contacts)
@@ -52,13 +53,26 @@ function renderAllContacts (contacts) {
         contactCard.appendChild(contactLastName);
         contactCard.appendChild(updateBtn);
         updateBtn.insertAdjacentElement("afterBegin", updateIcon);
-        contactCard.appendChild(deleteBtn);
+        updateBtn.setAttribute('id', contact.id)
+        updateBtn.addEventListener('click', (e) => {
+            console.log(e.target.id);
+            const updatetarget = e.target.id
+            updateContact(updatetarget)
+        })
+
         deleteBtn.insertAdjacentElement("afterBegin", deleteIcon);
-        // deleteBtn.addEventListener("click", deleteContact())
+        deleteBtn.setAttribute('id', contact.id)
+        contactCard.appendChild(deleteBtn);
+
+        deleteBtn.addEventListener('click', (e) => {
+            console.log(e.target.id);
+            const deletetarget = e.target.id
+            removeUser(deletetarget)
+        })
+      
+
     }
 }
-
-
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -81,75 +95,27 @@ form.addEventListener('submit', function(e) {
 
 
 
-// async function postContact (e) {
-//     e.prevent
-//    const formData = new FormData(form); 
-//     try{
-//         const response = await fetch('http://localhost:3000/api/users/add', {
-//              method: "POST",
-// //        headers: {
-//              'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(data)
-//         })
-//         const data = await response.json();
-//         console.log(data)
-//         renderAllContacts(data)
-//     } catch {
-//         console.log("error")
-//     }
-// }
-
-
-
-
-// submitBtn.addEventListener("submit", (e) => {
-//     e.preventDefault
-//     getPostContact()
-// })
-
-
-// async function getPostContact () {
-//     try{
-//         const response = await fetch('http://localhost:3000/api/users/add')
-//         const data = await response.json();
-//         console.log(data)
-//         renderAllContacts(data)
-//     } catch {
-//         console.log("error")
-//     }
-// }
-
-// 
-// function postNewContact (data) {
-//     console.log(data)
-
-// }
-
-
-
-// async function deleteContact() {
-//     const response = await fetch(
-//       `http://localhost:3000/api/users/delete/${users.id}`,
-//       {
-//         method: "DELETE",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       }
-//     );
-//     const data = await response.json();
-//     props.setAllAlgs(data);
-//     props.setAlgs(data);
-//     history.push("/");
-//   }
-// async function deleteContact () {
-//     try{
-//         const response = await fetch('http://localhost:3000/api/users/delete/')
-//         const data = await response.json();
-//         console.log(data)
+async function removeUser(contact) {
     
-//     } catch {
-//         console.log("error")
-//     }
-// }
+        const responses = await fetch(`http://localhost:3000/api/users/${contact}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+              },
+        });
+   
+    const data = await responses.json()
+    renderAllContacts(data);
+}
+
+
+async function updateContact (updatetarget) {
+    const response = await fetch(`http://localhost:3000/api/users/${updatetarget}`, {
+        method:"PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatetarget)
+    })
+    response.json()
+}

@@ -5,7 +5,7 @@ var path = require('path');
 //filesystem för att kunna hantera filer, läsa skriva osv. Annars kan vi inte gör så mycket gentligen. Om vi vill hämta från jsonfil. Men om vi vill hämta från en array som är hårdkodad.
 //Bara för att ta externa fikler och använda.
 const fs = require("fs");
-const users = require("./users.json")
+
 app.use(express.static(path.join(__dirname, 'public')));
 // const cors = require("cors")
 //datan som skickas från post request. parser 
@@ -27,9 +27,17 @@ app.get('/api/users', (req, res) =>{
 
 //Hämta ett specifikt id
 app.get('/api/users/:id', (req, res) => {
-    const user = users.find((user) => user.id == req.params.id);
-        if (!user) res.status(404).send("User with id was not found");
-        res.send(user);
+    fs.readFile("users.json", (err, data) => {
+        if(err) {
+            res.status(404).send("User with id was not found")
+        }
+        const users = JSON.parse(data)
+        const user = users.find((user) => user.id == req.params.id);
+        res.status(200).send(user)
+    })
+    // const user = users.find((user) => user.id == req.params.id);
+    //     if (!user) res.status(404).send("User with id was not found");
+    //     res.send(user);
 
     // fs.readFile("users.json", (err, data) => {
     //     if(err) {
@@ -53,7 +61,7 @@ app.post('/api/users', (req, res) => {
 
         const users = JSON.parse(data)
         const newUser = {
-            id: users.length +1,
+            id: users.length +1, //Fixa ett bättre sätt!
             userName: req.body.userName,
             firstName: req.body.firstName,
             lastName: req.body.lastName
@@ -77,21 +85,19 @@ app.post('/api/users', (req, res) => {
 //Update
 app.put('/api/users/:id', (req, res) => {
     fs.readFile("users.json", (err, data) => {
-        if(err) {
-            res.status(404).send("Couldn't find users")
-            return
-        }else {
-            const users = JSON.parse(data)
+        const users = JSON.parse(data)
+        const user = users.find((user) => user.id == req.params.id);
+        if (!user) {
+            res.status(404).send("User with id was not found");
+
+        }else{
             users.find((user) => {
             if(user.id == req.params.id) {
                 user.userName = req.body.userName,
                 user.firstName = req.body.firstName,
                 user.lastName = req.body.lastName
             } 
-            // else{
-            //     res.status(404).send("Couldn't find id and update users")
-            //     return;
-            // }
+          
         });
   
          fs.writeFile("users.json", JSON.stringify(users, null, 2), () => {

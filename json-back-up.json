@@ -10,5 +10,29 @@
     "userName": "Freddan",
     "firstName": "Fredrik",
     "lastName": "Thelin"
+  },
+  {
+    "id": 3,
+    "userName": "Lurp",
+    "firstName": "Lupio",
+    "lastName": "Andersson"
+  },
+  {
+    "id": 4,
+    "userName": "Lina",
+    "firstName": "Lupina",
+    "lastName": "Karlsson"
+  },
+  {
+    "id": 5,
+    "userName": "Fimpen",
+    "firstName": "Timmy",
+    "lastName": "Karlsson"
+  },
+  {
+    "id": 6,
+    "userName": "test",
+    "firstName": "test",
+    "lastName": "test"
   }
 ]
