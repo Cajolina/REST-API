@@ -1,31 +1,31 @@
 [
   {
-    "id": 1,
-    "userName": "Cajo",
+    "id": 123,
+    "email": "Cajo@gmail.com",
     "firstName": "Carolina",
     "lastName": "Andersson"
   },
   {
-    "id": 2,
-    "userName": "Freddan",
+    "id": 234,
+    "email": "Freddan@gmail.com",
     "firstName": "Fredrik",
     "lastName": "Thelin"
   },
   {
-    "id": 3,
-    "userName": "Lurp",
+    "id": 567,
+    "email": "Lurp@gmail.com",
     "firstName": "Lupio",
     "lastName": "Andersson"
   },
   {
-    "id": 4,
-    "userName": "Lina",
+    "id": 891,
+    "email": "Lina@gmail.com",
     "firstName": "Lupina",
     "lastName": "Karlsson"
   },
   {
-    "id": 5,
-    "userName": "Fimpen",
+    "id": 912,
+    "email": "Fimpen@gmail.com",
     "firstName": "Timmy",
     "lastName": "Karlsson"
   }

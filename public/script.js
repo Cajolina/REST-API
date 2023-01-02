@@ -7,7 +7,7 @@ const closePopup = document.querySelector(".close-button")
 const popupUpdateBtn = document.querySelector(".popupUpdateBtn")
 const overlay = document.querySelector("#overlay")
 
-const userName = document.querySelector("#userN");
+const email = document.querySelector("#email");
 const firstName = document.querySelector("#firstN");
 const lastName = document.querySelector("#lastN");
 
@@ -35,8 +35,8 @@ function renderAllContacts (contacts) {
 
         const contactId = document.createElement("p");
         contactId.innerText = "Id: " + contact.id
-        const contactUserName = document.createElement("p");
-        contactUserName.innerText = "Username: " + contact.userName
+        const contactemail = document.createElement("p");
+        contactemail.innerText = "Email: " + contact.email
         const contactFirstName = document.createElement("p");
         contactFirstName.innerText = "Firstname: " + contact.firstName   
         const contactLastName = document.createElement("p");
@@ -54,7 +54,7 @@ function renderAllContacts (contacts) {
         
         contactContainerDiv.appendChild(contactCard)
         contactCard.appendChild(contactId);
-        contactCard.appendChild(contactUserName);
+        contactCard.appendChild(contactemail);
         contactCard.appendChild(contactFirstName);
         contactCard.appendChild(contactLastName);
         contactCard.appendChild(updateBtn);
@@ -141,7 +141,7 @@ async function updateContact (updatetarget) {
             "Content-Type": "application/json",
         },
         
-        body: JSON.stringify({"userName": userName.value, "firstName": firstName.value, "lastName": lastName.value})
+        body: JSON.stringify({"email": email.value, "firstName": firstName.value, "lastName": lastName.value})
     }) 
    
     response.json()

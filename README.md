@@ -6,7 +6,7 @@ Inlämningsuppgift REST-API
 
 ### Beskrivning av projekt:
 
-Det är en mindre applikation för en digital kontaktbok.På backenden har API:et funktionalitet för CURD och har endpoints för GET, POST, PUT och DELETE. Där går det att testköra dessa endpoints i min .rest-fil.  
+Det här är en mindre applikation för en digital kontaktbok. På backenden har API:et funktionalitet för CURD och har endpoints för GET, POST, PUT och DELETE. Där går det att testköra dessa endpoints i min .rest-fil.  
 På klientsidan (frontend) så hämtas och renderas kontakter ut där du kan lägga till, uppdatera och ta bort kontakter, och detta uppdateras i vår json-fil som är istället för en databas.
 
 ### Hur applikationen byggts & körs:
@@ -14,16 +14,14 @@ På klientsidan (frontend) så hämtas och renderas kontakter ut där du kan lä
 Har använt git och github, men även gjort issues för att planera upp projektet och dela upp olika moment för att bryta ner och kunna se tydligare vad som ska göras.
 För att kunna köra denna applikation måste du:
 
-1. Ladda ner Node.js
-
-2. npm install för att installera dependencies:
+1. npm install för att installera dependencies:
    express (terminalen)
 
-3.nodemon start - för att starta servern(terminalen)
+2.nodemon index.js eller npm start - för att starta servern(terminalen)
 
-4.Gå in i din webbläsare på localhost:3000
+3.Gå in i din webbläsare på localhost:3000
 
-5. Gå in på test.rest i backenden för att testa endpointsen i filen.
+4. Gå in på test.rest i backenden för att testa endpointsen i filen.
    Lägg till Rest Client extension i VScode
 
 ### Jag har satsat på VG.

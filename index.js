@@ -22,16 +22,23 @@ app.get('/api/users', (req, res) =>{
 });
 
 //Hämta ett specifikt id
+
 app.get('/api/users/:id', (req, res) => {
     fs.readFile("users.json", (err, data) => {
-        if(err) {
-            res.status(404).send("User with id was not found")
-        }
         const users = JSON.parse(data)
         const user = users.find((user) => user.id == req.params.id);
-        res.status(200).send(user)
+
+        if (!user) {
+            res.status(404).send("User with id was not found");
+
+        }else {
+            res.status(200).send(user)
+        }
+        
+        
     })
 })
+
 
 
 //Skapa.
@@ -43,8 +50,8 @@ app.post('/api/users', (req, res) => {
         
         const users = JSON.parse(data)
         const newUser = {
-            id: users.length +1, //Fixa ett bättre sätt! kan bli problem när man tar bort 1 i listan..
-            userName: req.body.userName,
+            id: Math.floor(Math.random() * 1000),
+            email: req.body.email,
             firstName: req.body.firstName,
             lastName: req.body.lastName
         } 
@@ -74,7 +81,7 @@ app.put('/api/users/:id', (req, res) => {
         }else{
             users.find((user) => {
             if(user.id == req.params.id) {
-                user.userName = req.body.userName,
+                user.email = req.body.email,
                 user.firstName = req.body.firstName,
                 user.lastName = req.body.lastName
             } 
