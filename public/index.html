@@ -29,13 +29,36 @@
                 <input type="text" name="lastName">
                 <button type="submit" id="submit_btn"><i class="fa-solid fa-plus"></i>Add Contact</button>
             </form>
-            
+
+
+             
+        
+        </div>
+<div class="update_container active" id="update_container">
+                
+                <div class="form_header">
+                    <h2 class="title">Update Contact</h2>
+                    <button class="close-button">&times;</button>
+                </div>
+
+            <form method="put" class="form_update">
+                <input type="text" placeholder="Username" id="userN">
+                <input type="text" placeholder="Firstname" id="firstN">
+                <input type="text" placeholder="Lastname" id="lastN"> 
+
+                <button class="popupUpdateBtn">Update</button>
+            </form>
+
         </div>
 
+        <div id="overlay"></div>
+       
         <div class="contact_container">
             <h2>Contacts</h2>
 
         </div>
+
+        
 
     </main>
 </body>

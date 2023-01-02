@@ -2,12 +2,20 @@ const main = document.querySelector("main");
 const contactContainerDiv = document.querySelector(".contact_container");
 const submitBtn = document.querySelector("#submit_btn");
 const form = document.querySelector(".form_con");
+const updateContainer = document.querySelector(".update_container")
+const closePopup = document.querySelector(".close-button")
+const popupUpdateBtn = document.querySelector(".popupUpdateBtn")
+const overlay = document.querySelector("#overlay")
+
+const userName = document.querySelector("#userN");
+const firstName = document.querySelector("#firstN");
+const lastName = document.querySelector("#lastN");
 
 async function getAllContacts() {
     try{
         const response = await fetch('http://localhost:3000/api/users')
         const data = await response.json();
-        // console.log(data)
+       
         renderAllContacts(data)
     } catch {
         console.log("error")
@@ -19,9 +27,7 @@ getAllContacts()
 
 
 function renderAllContacts (contacts) {
-    //Hämta users från json
-    // console.log(contacts)
-    //loopa igenom json filen och skapa div för varje kontakt kort
+
     contactContainerDiv.innerHTML = ""
     for(const contact of contacts) {
         const contactCard = document.createElement("div");
@@ -57,7 +63,7 @@ function renderAllContacts (contacts) {
         updateBtn.addEventListener('click', (e) => {
             console.log(e.target.id);
             const updatetarget = e.target.id
-            updateContact(updatetarget)
+            updatePopup(updatetarget)
         })
 
         deleteBtn.insertAdjacentElement("afterBegin", deleteIcon);
@@ -80,7 +86,7 @@ form.addEventListener('submit', function(e) {
 
     const formData = new FormData(form);//new objekt of type form data, 
     const data = Object.fromEntries(formData)
-    // console.log([...formData])
+    
     fetch('http://localhost:3000/api/users', {
         method: "POST",
         headers: {
@@ -108,14 +114,36 @@ async function removeUser(contact) {
     renderAllContacts(data);
 }
 
+function updatePopup(updatetarget) {
+    updateContainer.style.display = "block"
+    overlay.style.display = "block"
+    popupUpdateBtn.addEventListener('click', () => {
+      updateContact(updatetarget)
+      
+    })
+   
+}
+
+
+closePopup.addEventListener('click', () => {
+    updateContainer.style.display = "none"
+    // updateContact()
+    overlay.style.display ="none"
+})
+
 
 async function updateContact (updatetarget) {
+   
+
     const response = await fetch(`http://localhost:3000/api/users/${updatetarget}`, {
         method:"PUT",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(updatetarget)
-    })
+        
+        body: JSON.stringify({"userName": userName.value, "firstName": firstName.value, "lastName": lastName.value})
+    }) 
+   
     response.json()
+    
 }
