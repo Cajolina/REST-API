@@ -7,6 +7,13 @@ const closePopup = document.querySelector(".close-button")
 const popupUpdateBtn = document.querySelector(".popupUpdateBtn")
 const overlay = document.querySelector("#overlay")
 
+const searchDiv = document.querySelector(".search_div")
+const searchInput = document.querySelector(".search_input")
+const searchBtn = document.querySelector(".searchBtn")
+const searchPopupDiv = document.createElement("div");
+searchDiv.appendChild(searchPopupDiv)
+const searchFirstname = document.querySelector("#search_firstname")
+
 const email = document.querySelector("#email");
 const firstName = document.querySelector("#firstN");
 const lastName = document.querySelector("#lastN");
@@ -147,3 +154,23 @@ async function updateContact (updatetarget) {
     response.json()
     
 }
+
+
+
+searchBtn.addEventListener("click", searchContact)
+
+async function searchContact () {
+    const searchValue = searchFirstname.value
+    try {
+        const response = await fetch(`http://localhost:3000/api/users/${searchValue}`)
+        const data = await response.json();
+        
+        searchPopupDiv.innerText = data.firstName + " finns i kontaktboken" + " med id: " + data.id
+        console.log(data);}
+        catch{
+            searchPopupDiv.innerText = "Nähäädu, du har ingen kontakt som heter " + searchValue
+            
+        }
+
+}
+

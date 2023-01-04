@@ -62,6 +62,25 @@ main {
     margin-top: 10px;
 }
 
+.search_div {
+    max-height: 14rem;
+    background-color: rgba(0, 0, 0, .5 );
+    color: rgb(176, 186, 190)
+
+
+}
+
+.search_input{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(123, 131, 135);
+    margin: 1rem;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: rgb(37, 34, 34);
+}
+
 .contact_container {
     display: flex;
     
