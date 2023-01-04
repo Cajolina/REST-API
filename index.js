@@ -23,10 +23,10 @@ app.get('/api/users', (req, res) =>{
 
 //Hämta ett specifikt id
 
-app.get('/api/users/:id', (req, res) => {
+app.get('/api/users/:firstName', (req, res) => {
     fs.readFile("users.json", (err, data) => {
         const users = JSON.parse(data)
-        const user = users.find((user) => user.id == req.params.id);
+        const user = users.find((user) => user.firstName == req.params.firstName);
 
         if (!user) {
             res.status(404).send("User with id was not found");
