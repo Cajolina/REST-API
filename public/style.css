@@ -81,6 +81,10 @@ main {
     color: rgb(37, 34, 34);
 }
 
+.searchBtn {
+    margin-top: 10px;
+}
+
 .contact_container {
     display: flex;
     
