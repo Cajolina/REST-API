@@ -7,7 +7,7 @@ Inlämningsuppgift REST-API
 ### Beskrivning av projekt:
 
 Det här är en mindre applikation för en digital kontaktbok. På backenden har API:et funktionalitet för CURD och har endpoints för GET, POST, PUT och DELETE. Där går det att testköra dessa endpoints i min .rest-fil.  
-På klientsidan (frontend) så hämtas och renderas kontakter ut där du kan lägga till, uppdatera och ta bort kontakter, och detta uppdateras i vår json-fil som är istället för en databas.
+På klientsidan (frontend) så hämtas och renderas kontakter ut där du kan lägga till, uppdatera, ta bort kontakter och söka efter specifika kontaker, detta uppdateras i vår json-fil som är istället för en databas.
 
 ### Hur applikationen byggts & körs:
 
