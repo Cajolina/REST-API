@@ -14,8 +14,9 @@ På klientsidan (frontend) så hämtas och renderas kontakter ut där du kan lä
 Har använt git och github, men även gjort issues för att planera upp projektet och dela upp olika moment för att bryta ner och kunna se tydligare vad som ska göras.
 För att kunna köra denna applikation måste du:
 
-1. npm install för att installera dependencies:
-   express (terminalen)
+1. npm install för att installera dependencies :
+   express
+   cors (för golive)
 
 2.nodemon index.js eller npm start - för att starta servern(terminalen)
 

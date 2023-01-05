@@ -4,8 +4,8 @@ var path = require('path');
 const fs = require("fs");
 
 app.use(express.static(path.join(__dirname, 'public')));
-// const cors = require("cors")//behövs om frontend är i annat projekt
-
+const cors = require("cors")//behövs om frontend är i annat projekt
+app.use(cors());
 app.use(express.json());
 
 //Hämta all data
