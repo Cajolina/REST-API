@@ -17,6 +17,7 @@ För att kunna köra denna applikation måste du:
 1. npm install för att installera dependencies :
    express
    cors (för golive)
+   uuid
 
 2.nodemon index.js eller npm start - för att starta servern(terminalen)
 

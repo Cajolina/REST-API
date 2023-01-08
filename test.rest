@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3000/api/users/912
+PUT http://localhost:3000/api/users/82b97c3a-4ef0-408e-bc41-983beb56aaa0
 Content-Type: application/json
 
 {
@@ -29,6 +29,6 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/users/912
+DELETE http://localhost:3000/api/users/82b97c3a-4ef0-408e-bc41-983beb56aaa0
 
 
