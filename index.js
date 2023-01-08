@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 var path = require('path');
 const fs = require("fs");
+const { v4: uuidv4 } = require('uuid');
 
 app.use(express.static(path.join(__dirname, 'public')));
 const cors = require("cors")//behövs om frontend är i annat projekt
@@ -48,9 +49,10 @@ app.post('/api/users', (req, res) => {
              res.status(404).send("Couldn't get users")
         }
         
+        let uuid = uuidv4()
         const users = JSON.parse(data)
         const newUser = {
-            id: Math.floor(Math.random() * 1000),
+            id: uuid,
             email: req.body.email,
             firstName: req.body.firstName,
             lastName: req.body.lastName

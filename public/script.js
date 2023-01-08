@@ -125,7 +125,8 @@ function updatePopup(updatetarget) {
     updateContainer.style.display = "block"
     overlay.style.display = "block"
     popupUpdateBtn.addEventListener('click', () => {
-      updateContact(updatetarget)
+       
+        updateContact(updatetarget)
       
     })
    
